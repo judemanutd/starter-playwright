@@ -1,14 +1,13 @@
-import { test, expect } from '@playwright/test';
-import { PlaywrightDevPage } from './pageobjects/playwright-dev-page';
+import { test, expect } from "@playwright/test";
 
-test('basic test without POM', async ({ page }) => {
-  await page.goto('https://playwright.dev/');
-  await page.locator('text=Get started').click();
-});
+test("get started link", async ({ page }) => {
+  await page.goto("https://playwright.dev/");
 
-test('Get Started doc intro', async ({ page }) => {
-  const playwrightDev = new PlaywrightDevPage(page);
-  await playwrightDev.goto();
-  await playwrightDev.getStarted();
-  await expect(playwrightDev.tocList).toContainText('Installation');
+  // Click the get started link.
+  await page.getByRole("link", { name: "Get started" }).click();
+
+  // Expects page to have a heading with the name of Installation.
+  await expect(
+    page.getByRole("heading", { name: "Installation" })
+  ).toBeVisible();
 });
