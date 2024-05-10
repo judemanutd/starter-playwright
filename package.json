@@ -13,5 +13,8 @@
     "@playwright/test": "^1.44.0",
     "@types/node": "^20.12.11",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@estruyf/github-actions-reporter": "^1.7.0"
   }
 }

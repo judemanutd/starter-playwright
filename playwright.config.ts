@@ -28,7 +28,12 @@ const config: PlaywrightTestConfig = {
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // reporter: 'html',
-  reporter: [["dot"], ["line"], ["html", { open: "never" }]],
+  reporter: [
+    ["dot"],
+    ["line"],
+    ["html", { open: "never" }],
+    ["@estruyf/github-actions-reporter"],
+  ],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
