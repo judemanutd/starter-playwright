@@ -31,8 +31,14 @@ const config: PlaywrightTestConfig = {
   reporter: [
     ["dot"],
     ["line"],
-    ["html", { open: "never" }],
-    ["@estruyf/github-actions-reporter"],
+    ["html"],
+    [
+      "@estruyf/github-actions-reporter",
+      {
+        useDetails: true,
+        showError: true,
+      },
+    ],
   ],
 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
