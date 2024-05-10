@@ -30,7 +30,18 @@ jobs:
         run: |
           npm ci --frozen-lockfile
 
-      - name: Install Playwright
+      # - name: Install Playwright
+      #   run: npx playwright install --with-deps
+
+      - name: Cache Playwright Browsers for Playwright's Version
+        id: cache-playwright-browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-browsers
+
+      - name: Setup Playwright
+        if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
